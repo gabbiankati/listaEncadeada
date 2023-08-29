@@ -27,6 +27,20 @@ void adicionarItem(Item** primeiro, int valor){
         atual->proximo = novoItem;
     }
 }
+
+Item* obterItem(Item** inicio, int pos) {
+    Item* item = *inicio;
+    int i = 0;
+
+    while (i < pos && item != NULL){
+        item = item->proximo;
+        i ++;
+    }
+
+    return item;
+}
+
+
 int main() {
     Item* primeiro = NULL;
     adicionarItem(&primeiro, 5);
@@ -41,6 +55,9 @@ int main() {
         printf("%d \n", item->valor);
         item = item->proximo;
     }
+
+    item = obterItem(&primeiro, 2);
+    printf("A posição 2 da lista tem o valor %d", item->valor);
 
     return 0;
 }
